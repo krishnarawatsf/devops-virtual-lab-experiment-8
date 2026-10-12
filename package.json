@@ -1,0 +1,33 @@
+{
+  "name": "devops-blue-green-deployment-vle8",
+  "version": "1.0.0",
+  "description": "VLE-8: Blue-Green Deployment using Jenkins, Kubernetes, Docker, Terraform, Ansible, Prometheus, and Grafana",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "app": "node src/app.js",
+    "switcher": "node src/switcher.js",
+    "test": "node tests/run_all_tests.js",
+    "verify": "bash scripts/verify_stack.sh"
+  },
+  "keywords": [
+    "devops",
+    "blue-green",
+    "kubernetes",
+    "jenkins",
+    "docker",
+    "terraform",
+    "ansible",
+    "prometheus",
+    "grafana",
+    "vle-8"
+  ],
+  "author": "Krishna Rawat",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.19.2",
+    "http-proxy": "^1.18.1",
+    "prom-client": "^15.1.3"
+  }
+}

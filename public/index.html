@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VLE-8 Blue-Green Deployment Command Center</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="nav">
+    <div class="brand">
+      <span class="logo">BG</span>
+      <div>
+        <strong>DevOps Command Center</strong>
+        <small>VLE-8 Blue-Green Deployment</small>
+      </div>
+    </div>
+    <div class="pills">
+      <span class="pill">Jenkins CI/CD</span>
+      <span class="pill">Kubernetes</span>
+      <span class="pill">Prometheus</span>
+      <span class="pill">Grafana</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Virtual Lab Experiment 8</p>
+        <h1>Blue-Green cutover with zero downtime</h1>
+        <p>Blue (v1) stays live while Green (v2) is deployed in parallel. The Service selector is the switch.</p>
+      </div>
+      <div class="live-card" id="liveCard">
+        <span class="eyebrow">Live traffic</span>
+        <h2 id="liveColor">—</h2>
+        <p id="liveVersion">checking…</p>
+      </div>
+    </section>
+
+    <section class="grid two">
+      <article class="env blue">
+        <h3>Blue environment</h3>
+        <p>Live version · 2 pods · myapp:v1</p>
+        <div class="pods" id="bluePods"></div>
+      </article>
+      <article class="env green">
+        <h3>Green environment</h3>
+        <p>New version · 2 pods · myapp:v2</p>
+        <div class="pods" id="greenPods"></div>
+      </article>
+    </section>
+
+    <section class="actions">
+      <button id="btnGreen" class="btn green">Switch traffic to Green</button>
+      <button id="btnBlue" class="btn blue">Rollback to Blue</button>
+      <a class="btn ghost" href="http://localhost:9090" target="_blank" rel="noreferrer">Prometheus</a>
+      <a class="btn ghost" href="http://localhost:3000" target="_blank" rel="noreferrer">Grafana</a>
+      <a class="btn ghost" href="http://localhost:8090" target="_blank" rel="noreferrer">Live app</a>
+    </section>
+
+    <section>
+      <h3>Pipeline & stack</h3>
+      <div class="components" id="components"></div>
+    </section>
+
+    <section>
+      <h3>Switch history</h3>
+      <pre id="history">No switches yet.</pre>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+groups:
+  - name: vle8-blue-green
+    rules:
+      - alert: ReplicaDown
+        expr: up{app="myapp"} == 0
+        for: 30s
+        labels:
+          severity: critical
+        annotations:
+          summary: "myapp replica is down"
+          description: "Instance {{ $labels.instance }} color={{ $labels.color }} is not being scraped."
+
+      - alert: HighErrorRate
+        expr: rate(http_requests_total{status_code=~"5.."}[1m]) > 0.2
+        for: 1m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High 5xx rate on myapp"
+      - alert: SwitcherDown
+        expr: up{job="service-switch"} == 0
+        for: 30s
+        labels:
+          severity: critical
+        annotations:
+          summary: "Blue-Green service switch is down"
